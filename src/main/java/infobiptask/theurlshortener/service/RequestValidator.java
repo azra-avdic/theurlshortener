@@ -25,6 +25,10 @@ public class RequestValidator {
             throw new UrlValidationException("Invalid request: AccountId cannot be null or empty!");
         }
 
+        if (request.getAccountId().length() > 20) {
+            throw new UrlValidationException("AccountId can not be over 20 characters long!");
+        }
+
         if (existsAccount(request.getAccountId())) {
             throw new UrlValidationException("Account with id " + request.getAccountId() + " already exists!");
         }
